@@ -1,0 +1,43 @@
+package com.springboot.jdbc;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AccountDaoImpl implements AccountDao{
+	@Autowired // it is used to inject the value to jdbcTemplate directily
+	// but we can also use setter or constructor injection to give the value
+	private JdbcTemplate jdbcTemplate;
+
+	@Override
+	public void createAccount(Account acct) {
+		String SQL= "insert into account values (?, ?, ?) ";
+		jdbcTemplate.update(SQL, acct.getAccountNum(), acct.getAccountType(),acct.getAccountBalance());
+		
+	}
+
+	@Override
+	public void updateAccount(int accountNum, int accountBalance) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAccount(int accountNum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> getAllAccounts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

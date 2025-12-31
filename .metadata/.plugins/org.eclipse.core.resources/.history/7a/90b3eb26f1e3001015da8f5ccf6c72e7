@@ -1,0 +1,18 @@
+package com.springboot.jdbc;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+public class SpringbootJdbcApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context= SpringApplication.run(SpringbootJdbcApplication.class, args);
+		AccountDao dao= context.getBean(AccountDao.class);
+		Account acct= new Account(101,"Savings",50000);
+		dao.createAccount(acct);
+		
+	}
+
+}
